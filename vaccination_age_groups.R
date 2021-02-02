@@ -50,7 +50,7 @@ country_str <- "Burkina Faso"	#Note: if seasonality is off in the odin file, doe
 admin_str <- "Houet" # Hauts-Bassins, bioassay = 0.3.
 
 ### 1. No interventions
-out <- run_model(              model = 'odin_model_JDC',
+out <- run_model(              model = 'odin_model_TBV',
                                 time = time_period,
                                 het_brackets = 5,
                                 age = init_age,
@@ -130,7 +130,7 @@ for(i in 2:vll){
   age_max_tbv <- 3*(i-2) + 3
   print(paste0(age_min_tbv," ",age_max_tbv))
 
-  out2 <- run_model(              model = 'odin_model_JDC',
+  out2 <- run_model(              model = 'odin_model_TBV',
                                   time = time_period,
                                    het_brackets = 5,
                                    age = init_age,

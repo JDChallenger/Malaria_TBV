@@ -36,7 +36,7 @@ country_str <- "Burkina Faso"
 admin_str <- "Houet"
 
 ## No-intervention model
-out0 <- run_model(   model = 'odin_model_JDC',
+out0 <- run_model(   model = 'odin_model_TBV',
                                  het_brackets = 5,
                                  age = init_age,
                                  num_int = 4,
@@ -107,7 +107,7 @@ for(i in 1:length(vac_coverage)){
   print(vac_cov)
 
   #1.
-  out1 <- run_model(   model = 'odin_model_JDC',
+  out1 <- run_model(   model = 'odin_model_TBV',
                                   het_brackets = 5,
                                   age = init_age,
                                   num_int = 4,
@@ -147,7 +147,7 @@ for(i in 1:length(vac_coverage)){
                                   V_max_RTS = V_max_RTS)
 
   #2.
-  out2 <- run_model(   model = 'odin_model_JDC',
+  out2 <- run_model(   model = 'odin_model_TBV',
                                    het_brackets = 5,
                                    age = init_age,
                                    num_int = 4,
@@ -187,7 +187,7 @@ for(i in 1:length(vac_coverage)){
                                    V_max_RTS = V_max_RTS)
 
   #3.
-  out3 <- run_model(   model = 'odin_model_JDC',
+  out3 <- run_model(   model = 'odin_model_TBV',
                                    het_brackets = 5,
                                    age = init_age,
                                    num_int = 4,
@@ -227,7 +227,7 @@ for(i in 1:length(vac_coverage)){
                                    V_max_RTS = V_max_RTS)
 
   #4.
-  out4 <- run_model(   model = 'odin_model_JDC',
+  out4 <- run_model(   model = 'odin_model_TBV',
                                    het_brackets = 5,
                                    age = init_age,
                                    num_int = 4,
@@ -267,7 +267,7 @@ for(i in 1:length(vac_coverage)){
                                    V_max_RTS = V_max_RTS)
 
   #5.
-  out5 <- run_model(   model = 'odin_model_JDC',
+  out5 <- run_model(   model = 'odin_model_TBV',
                                    het_brackets = 5,
                                    age = init_age,
                                    num_int = 4,
@@ -307,7 +307,7 @@ for(i in 1:length(vac_coverage)){
                                    V_max_RTS = V_max_RTS)
 
   #6.
-  out6 <- run_model(   model = 'odin_model_JDC',
+  out6 <- run_model(   model = 'odin_model_TBV',
                                    het_brackets = 5,
                                    age = init_age,
                                    num_int = 4,

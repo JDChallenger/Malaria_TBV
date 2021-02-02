@@ -30,7 +30,7 @@ country_str <- "Burkina Faso"
 admin_str <- "Houet"
 
 # creates the odin model
-out <- run_model(   model = 'odin_model_JDC',
+out <- run_model(   model = 'odin_model_TBV',
                        het_brackets = 5,
                        age = init_age,
                        time = time_period,
@@ -137,7 +137,7 @@ store_ssq <- vary_eir
 
 for(j in 1:length(vary_eir)){
 
-    out <- run_model(   model = 'odin_model_JDC',
+    out <- run_model(   model = 'odin_model_TBV',
                       het_brackets = 5,
                       age = init_age,
                       time = time_period,
@@ -200,7 +200,7 @@ country_str <- "Burkina Faso"	#Note: if seasonality is off in the odin file, doe
 admin_str <- "Koulpelogo" # Centre-Est bioassay=0.4
 
 # creates the odin model
-out <- run_model(   model = 'odin_model_JDC',
+out <- run_model(   model = 'odin_model_TBV',
                                 het_brackets = 5,
                                 age = init_age,
                                 init_EIR = init_EIR,
@@ -294,7 +294,7 @@ targetTimes <- targetTimes + (8*365)
 store_ssq <- vary_eir
 
 for(j in 1:length(vary_eir)){
-  out <- run_model(   model = 'odin_model_JDC',
+  out <- run_model(   model = 'odin_model_TBV',
                       het_brackets = 5,
                       age = init_age,
                       init_EIR = vary_eir[j],

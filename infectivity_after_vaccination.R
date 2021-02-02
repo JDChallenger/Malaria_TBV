@@ -37,7 +37,7 @@ source("scripts/vaccine_params.R") # Vaccine params that won't change with inter
 country_str <- "Burkina Faso"	#Note: if seasonality is off in the odin file, doesn't matter what you put here
 admin_str <- "Houet"
 
-out0 <- run_model(model = 'odin_model_JDC',
+out0 <- run_model(model = 'odin_model_TBV',
                   het_brackets = 5,
                   age = init_age,
                   num_int = 4,
@@ -78,7 +78,7 @@ out0 <- run_model(model = 'odin_model_JDC',
 
 # 1. Model with intervention
 
-out <- run_model(model = 'odin_model_JDC',
+out <- run_model(model = 'odin_model_TBV',
                   het_brackets = 5,
                   age = init_age,
                   num_int = 4,

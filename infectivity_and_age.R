@@ -42,7 +42,7 @@ country_str <- "Burkina Faso"	#Note: if seasonality is off in the odin file, doe
 admin_str <- "Houet" # Hauts-Bassins, bioassay = 0.3.
 
 # creates the odin model
-out0 <- run_model(              model = 'odin_model_JDC',
+out0 <- run_model(              model = 'odin_model_TBV',
                                 time = time_period,
                                 het_brackets = 5,
                                 age = init_age,
