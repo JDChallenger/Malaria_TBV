@@ -1,4 +1,4 @@
-#This script generates Figure 2 (all panels), Figure 1D & 1E, and Figure S3
+#This script generates Figure 4 (all panels), Figure 3D & 3E, Suppl. Figures 3, 5A & 5B
 
 library(ggplot2)
 library(RColorBrewer)
@@ -13,7 +13,7 @@ themeJDC <- theme(panel.background = element_blank(),panel.grid.major = element_
                   legend.key = element_blank(), axis.text = element_text(size = 11.2),
                   axis.title = element_text(size=12), legend.text = element_text(size = 10.5),
                   legend.title = element_text(size = 10.8))
-source("R/vaccine_params.R") # Vaccine params that won't change with intervention details
+source("vaccine_params.R") #Parameters from the vaccine model
 
 TRA <- function(titre){
 
@@ -46,7 +46,7 @@ pl1 <- ggplot(dftrm, aes(x = titre, y = value, linetype = variable)) + geom_line
   themeJDC + ylim(c(0,1)) + theme(legend.position = c(0.75,0.3), legend.key.size = unit(0.95,"cm")) +
   xlim(c(0,31.5)) + xlab(expression(paste("Antibody Titre [",mu,"g / ml]"))) + ylab("Vaccine Activity") +
   scale_linetype_manual(values=c("solid", "dotted")) + labs(linetype="Lab-estimated activity")
-pl1
+#pl1
 
 antibody <- function(time,ds,dl){
 
@@ -80,7 +80,7 @@ pl2 <- ggplot(abodm, aes(x=time, y=value, color = variable)) + geom_line(size=1)
     values=c("#1b9e77","#d95f02","#7570b3"),
     labels=c("RTS,S","Longer","Shorter")) + ylim(c(0.0,22.7)) + xlab("Time Post Vaccination (Days)") +
   theme(legend.position = c(0.7,0.8), plot.margin = unit(c(5.5,5.5,5.5,13), "pt"))
-pl2
+#pl2
 
 traDF <- data.frame(time = tt, "Intermediate titre" = tra, "Higher titre" = traB, "Lower titre" = traW)
 traDFm <- melt(traDF, id.vars = "time")
@@ -132,25 +132,25 @@ for(i in seq(1,100,1)){
   tbaALL[i] <- TBAz(rrALL, mALL, i*0.01)
 }
 
-eff_v <- 0.16*df4simp3[,1] + 0.23*df4simp3[,2] + 0.65*df4simp3[,3] + 0.82*df4simp3[,4]
-mean(TBAz(rrD, mD, 0.9)*df4simp3[,1] + TBAz(rrT, mT, 0.9)*df4simp3[,2] +
-  TBAz(rrA, 4.0, 0.9)*df4simp3[,3] + TBAz(rrU, mU, 0.9)*df4simp3[,4])
+#eff_v <- 0.16*df4simp3[,1] + 0.23*df4simp3[,2] + 0.65*df4simp3[,3] + 0.82*df4simp3[,4]
+#mean(TBAz(rrD, mD, 0.9)*df4simp3[,1] + TBAz(rrT, mT, 0.9)*df4simp3[,2] +
+#  TBAz(rrA, 4.0, 0.9)*df4simp3[,3] + TBAz(rrU, mU, 0.9)*df4simp3[,4])
 
-klee <- rep(0,99) #Klesso
-for(i in 1:99){
-  klee[i] <- mean(TBAz(rrD, 50, 0.01*i)*df4simp3[,1] + TBAz(rrT, mT, 0.01*i)*df4simp3[,2] +
-                    TBAz(rrA, 4.3, 0.01*i)*df4simp3[,3] + TBAz(rrU, mU, 0.01*i)*df4simp3[,4])
-}
-klee
-
-loon <- rep(0,99) #Klesso
-for(i in 1:99){
-  loon[i] <- mean(TBAz(rrD, 50, 0.01*i)*df4simp3[,1] + TBAz(rrT, mT, 0.01*i)*df4simp3[,2] +
-                    TBAz(rrA, 4.3, 0.01*i)*df4simp3[,3] + TBAz(rrU, mU, 0.01*i)*df4simp3[,4])
-}
-loon
-dxx <- data.frame('klee'=klee, 'loon' = loon)
-write.csv(dxx,"stuff.csv")
+# klee <- rep(0,99) #Klesso
+# for(i in 1:99){
+#   klee[i] <- mean(TBAz(rrD, 50, 0.01*i)*df4simp3[,1] + TBAz(rrT, mT, 0.01*i)*df4simp3[,2] +
+#                     TBAz(rrA, 4.3, 0.01*i)*df4simp3[,3] + TBAz(rrU, mU, 0.01*i)*df4simp3[,4])
+# }
+# klee
+#
+# loon <- rep(0,99) #Klesso
+# for(i in 1:99){
+#   loon[i] <- mean(TBAz(rrD, 50, 0.01*i)*df4simp3[,1] + TBAz(rrT, mT, 0.01*i)*df4simp3[,2] +
+#                     TBAz(rrA, 4.3, 0.01*i)*df4simp3[,3] + TBAz(rrU, mU, 0.01*i)*df4simp3[,4])
+# }
+# loon
+# dxx <- data.frame('klee'=klee, 'loon' = loon)
+# write.csv(dxx,"stuff.csv")
 
 traX <- seq(0.01,1,0.01)
 dfTBA <- data.frame(TRA = traX, D = tbaD, T = tbaT, A = tbaA, U = tbaU)
@@ -170,7 +170,7 @@ pl4b <- ggplot() + geom_line(data=dfTBAm, aes(x=TRA, y=value, color=variable), s
   annotate('segment', x = 0.9, xend = 0.9, y = 1, yend = 0, linetype = 'dashed')
 pl4b
 
-#With tbaALL
+#Supplementary Figure 5A
 eqpl4b <- ggplot() + geom_line(data=dfTBA2m, aes(x=TRA, y=value, color=variable), size=1) + themeJDC +
   xlab("Transmission Reducing Activity") + #theme(legend.position = 'none') + #labs(color="State") +
   ylab("Transmission Blocking Activity") + theme(legend.position = c(0.27,0.73), legend.title = element_blank()) +
@@ -180,7 +180,7 @@ eqpl4b <- ggplot() + geom_line(data=dfTBA2m, aes(x=TRA, y=value, color=variable)
         labels = c("Symptomatic (Untreated)","Symptomatic (Treated)","Asymptomatic","Subpatent","ALL"))
 eqpl4b
 
-#Make pmfs in case we need them
+#Make probability mass functions
 pmf <- function(i,m,k){
 
   result <- (1/((1-(((1+m/k))**(-k)))))*((factorial(k+i-1))/((factorial(i))*(factorial((k-1)))))*((1+m/k)**(-i-k))*(m/k)**i
@@ -233,6 +233,7 @@ pl4c <- ggplot(dfcm, aes(x=i,y=value, line = variable, color = variable) ) + geo
   scale_x_continuous(breaks = breaks2, limits = c(1,40))
 pl4c
 
+#Supplementary Figure 5B
 eqpl4c <- ggplot(dfc2m, aes(x=i,y=value, line = variable, color = variable) ) + geom_line(size=1.1) + themeJDC +
   scale_color_manual(values = c(cb[3], cb[5], cb[7],"#c51b8a","black")) + xlab("Oocyst Count") +
   ylab("Cumulative Distribution") +
@@ -316,34 +317,3 @@ probD2 <- ggplot() +
   annotate("text",x=100, y=0.022,label = paste0("For TRA = 0.9, TBA = ",round(sm,2)), size = sz) + ggtitle("D")
 
 grid.arrange(probU2, probA2, probT2, probD2, nrow = 2)
-
-
-############# New panel: TRA-TBA-oocyst no. plot ###############
-
-TRAv <- seq(0.1,0.9,0.2)
-oocysts <- seq(1,20,1)
-TBA <- rep(0,(length(TRAv))*(length(oocysts)))
-TRA <- rep(0,(length(TRAv))*(length(oocysts)))
-ooc <- rep(0,(length(TRAv))*(length(oocysts)))
-count <- 1
-for(i in 1:length(oocysts)){
-  for(j in 1:length(TRAv)){
-
-    TBA[count] <- TRAv[j]**(oocysts[i])
-    TRA[count] <- TRAv[j]
-    ooc[count] <- oocysts[i]
-
-    count <- count + 1
-  }
-}
-dfo <- data.frame("Oocyst"=ooc, "TBA"=TBA, "TRA"=TRA)
-bin <- ggplot(dfo, aes(y=1*TBA, x=Oocyst, group = factor(TRA), color = factor(TRA))) + geom_line() + themeJDC +
-  ylab("Transmission Blocking Activity") + xlab("Oocyst Count") + ylim(c(0,1)) +
-  labs(color = "TRA") + theme(legend.position = c(0.8,0.65)) +
-  scale_x_continuous(breaks = c(1,5,10,15), limits = c(1,16)) +
-  scale_colour_manual("TRA",guide = guide_legend(reverse = TRUE),
-                  values = c('darkorange4','darkorange3','darkorange2','darkorange1','orange'))#,
-                 # labels = c("10","30","50","70","90"))
-  #scale_colour_manual(guide = guide_legend(reverse = TRUE),
-   #                   values = c('blue','darkblue','purple4','mediumvioletred','red1'))
-bin
